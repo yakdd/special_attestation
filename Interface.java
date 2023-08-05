@@ -5,30 +5,8 @@ public interface Interface {
 
     static String[] animals = { "кошка", "собака", "хомяк", "лошадь", "осел", "верблюд" };
 
-    static int chooseAnimal() {
+    public static void addAnimal() {
 
-        while (true) {
-            System.out.println("Выберете животное: ");
-            for (int i = 0; i < animals.length; i++)
-                System.out.printf("  %s - %d\n", animals[i], i + 1);
-
-            System.out.print(">>> ");
-            int typeAnimal;
-            try {
-                typeAnimal = Main.scan.nextInt();
-                Main.scan.nextLine();
-                if (typeAnimal > 0 && typeAnimal <= animals.length)
-                    return typeAnimal;
-                else
-                    return 0;
-            } catch (InputMismatchException e) {
-                System.out.println(Main.errorMessage);
-                Main.scan.nextLine();
-            }
-        }
-    }
-
-    static void addAnimal() {
         int typeAnimal = chooseAnimal();
         if (typeAnimal != 0) {
             String[] newAnimal = new String[2];
@@ -65,27 +43,8 @@ public interface Interface {
         }
     }
 
-    static void inputData(String[] newAnimal) {
+    public static void showCommands() {
 
-        while (true) {
-            System.out.print("Введите кличку животного: ");
-            String name = Main.scan.nextLine();
-
-            System.out.print("Введите возраст животного: ");
-            String age = Main.scan.nextLine();
-
-            try {
-                Integer.parseInt(age);
-                newAnimal[0] = name;
-                newAnimal[1] = age;
-                break;
-            } catch (NumberFormatException e) {
-                System.out.println(Main.errorMessage);
-            }
-        }
-    }
-
-    static void showCommands() {
         int typeAnimal = chooseAnimal();
         if (typeAnimal != 0) {
             switch (typeAnimal) {
@@ -122,6 +81,7 @@ public interface Interface {
     }
 
     public static void learnCommand() {
+
         int typeAnimal = chooseAnimal();
         if (typeAnimal != 0) {
             System.out.print("Введите новую команду: ");
@@ -151,6 +111,49 @@ public interface Interface {
             }
         } else {
             System.out.println(Main.errorMessage);
+        }
+    }
+
+    public static int chooseAnimal() {
+
+        while (true) {
+            System.out.println("Выберете животное: ");
+            for (int i = 0; i < animals.length; i++)
+                System.out.printf("  %d - %s\n", i + 1, animals[i]);
+
+            System.out.print(">>> ");
+            int typeAnimal;
+            try {
+                typeAnimal = Main.scan.nextInt();
+                Main.scan.nextLine();
+                if (typeAnimal > 0 && typeAnimal <= animals.length)
+                    return typeAnimal;
+                else
+                    return 0;
+            } catch (InputMismatchException e) {
+                System.out.println(Main.errorMessage);
+                Main.scan.nextLine();
+            }
+        }
+    }
+
+    public static void inputData(String[] newAnimal) {
+
+        while (true) {
+            System.out.print("Введите кличку животного: ");
+            String name = Main.scan.nextLine();
+
+            System.out.print("Введите возраст животного: ");
+            String age = Main.scan.nextLine();
+
+            try {
+                Integer.parseInt(age);
+                newAnimal[0] = name;
+                newAnimal[1] = age;
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println(Main.errorMessage);
+            }
         }
     }
 }

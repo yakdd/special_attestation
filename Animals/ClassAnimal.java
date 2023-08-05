@@ -2,13 +2,13 @@ package Animals;
 
 public abstract class ClassAnimal {
 
-    protected String sector;
+    protected String func;
     protected String type;
     protected String name;
     protected int age;
 
-    public ClassAnimal(String sector, String type, String name, int age) {
-        this.sector = sector;
+    public ClassAnimal(String func, String type, String name, int age) {
+        this.func = func;
         this.type = type;
         this.name = name;
         this.age = age;
@@ -16,6 +16,6 @@ public abstract class ClassAnimal {
 
     @Override
     public String toString() {
-        return type + ", " + sector + " животное. Кличка: " + name.toUpperCase() + ". Возраст: " + age;
+        return type + ", " + func + " животное. Кличка: " + name.toUpperCase() + ". Возраст: " + age;
     }
 }

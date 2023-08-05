@@ -14,7 +14,7 @@ public class Main implements Interface {
         System.out.println("Система учета для питомника вьючных и дашних животных".toUpperCase());
 
         while (true) {
-            System.out.print("Продолжить (y/n)?: ");
+            System.out.print("Продолжить работу в программе? (y/n): ");
             String answer = scan.nextLine();
             if (answer.equals("y"))
                 start();
@@ -24,20 +24,27 @@ public class Main implements Interface {
                 System.out.println(errorMessage);
         }
 
-        printNursery(nursery);
-        System.out.println("Количество животных в питомнике: " + Count.getCount());
         scan.close();
     }
 
     static void start() {
         while (true) {
             int animal;
-            System.out.print(
-                    "Выберете действие:\n  Завести новое животное - 1\n  Увидеть список команд, выполняемых животным - 2\n  Обучить животное новой команде - 3\n>>> ");
+            System.out.println("Выберете действие:");
+            System.out.println(" 0 - вывести список животных питомника");
+            System.out.println(" 1 - добавить новое животное");
+            System.out.println(" 2 - увидеть список команд, выполняемых животным");
+            System.out.println(" 3 - обучить животное новой команде");
+            System.out.print(">>>  ");
+
             try {
                 animal = scan.nextInt();
                 scan.nextLine();
                 switch (animal) {
+                    case 0:
+                        printNursery(nursery);
+                        System.out.println("Количество животных в питомнике: " + Count.getCount());
+                        break;
                     case 1:
                         Interface.addAnimal();
                         break;
@@ -66,5 +73,4 @@ public class Main implements Interface {
             System.out.println(animal);
         }
     }
-
 }
