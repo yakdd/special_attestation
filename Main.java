@@ -25,7 +25,7 @@ public class Main implements Interface {
         }
 
         printNursery(nursery);
-        System.out.println("count: " + Count.getCount());
+        System.out.println("Количество животных в питомнике: " + Count.getCount());
         scan.close();
     }
 

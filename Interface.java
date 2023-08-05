@@ -29,9 +29,7 @@ public interface Interface {
     }
 
     static void addAnimal() {
-
         int typeAnimal = chooseAnimal();
-
         if (typeAnimal != 0) {
             String[] newAnimal = new String[2];
             inputData(newAnimal);
@@ -89,10 +87,70 @@ public interface Interface {
 
     static void showCommands() {
         int typeAnimal = chooseAnimal();
-        System.out.println(typeAnimal);
+        if (typeAnimal != 0) {
+            switch (typeAnimal) {
+                case 1:
+                    System.out.println(Cat.getType() + " выполняет команды:");
+                    Cat.getCommands();
+                    break;
+                case 2:
+                    System.out.println(Dog.getType() + " выполняет команды:");
+                    Dog.getCommands();
+                    break;
+                case 3:
+                    System.out.println(Hamster.getType() + " выполняет команды:");
+                    Hamster.getCommands();
+                    break;
+                case 4:
+                    System.out.println(Horse.getType() + " выполняет команды:");
+                    Horse.getCommands();
+                    break;
+                case 5:
+                    System.out.println(Donkey.getType() + " выполняет команды:");
+                    Donkey.getCommands();
+                    break;
+                case 6:
+                    System.out.println(Camel.getType() + " выполняет команды:");
+                    Camel.getCommands();
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            System.out.println(Main.errorMessage);
+        }
     }
 
-    static void learnCommand() {
-        System.out.println(3);
+    public static void learnCommand() {
+        int typeAnimal = chooseAnimal();
+        if (typeAnimal != 0) {
+            System.out.print("Введите новую команду: ");
+            String newCommand = Main.scan.nextLine();
+
+            switch (typeAnimal) {
+                case 1:
+                    Cat.addCommand(newCommand);
+                    break;
+                case 2:
+                    Dog.addCommand(newCommand);
+                    break;
+                case 3:
+                    Hamster.addCommand(newCommand);
+                    break;
+                case 4:
+                    Horse.addCommand(newCommand);
+                    break;
+                case 5:
+                    Donkey.addCommand(newCommand);
+                    break;
+                case 6:
+                    Camel.addCommand(newCommand);
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            System.out.println(Main.errorMessage);
+        }
     }
 }
